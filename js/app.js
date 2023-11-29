@@ -10,12 +10,12 @@ let searchBtn = document.getElementById("searchBtn");
 
 // Weather for your navigator's location on load
 window.addEventListener("load", () => {
-  let geolocUrl = `https://api.weatherapi.com/v1/current.json?key=8685490f1f8f4420b26124327231204&q=Paris&aqi=no`;
+  let geolocUrl = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=Paris&aqi=no`;
   fetchWeather(geolocUrl);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       let [lat, long] = [position.coords.latitude, position.coords.longitude];
-      let geolocUrl = `https://api.weatherapi.com/v1/current.json?key=8685490f1f8f4420b26124327231204&q=${lat},${long}&aqi=no`;
+      let geolocUrl = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${lat},${long}&aqi=no`;
       fetchWeather(geolocUrl);
     });
   }
@@ -23,14 +23,14 @@ window.addEventListener("load", () => {
 // Listening to the button event to get the search field value
 searchBtn.onclick = (event) => {
   event.preventdefault;
-  let url = `https://api.weatherapi.com/v1/current.json?key=8685490f1f8f4420b26124327231204&q=${searchField.value}&aqi=no`;
+  let url = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${searchField.value}&aqi=no`;
   searchField.value = "";
   fetchWeather(url);
 };
 // Listening to keydown event for 'Enter' in the search field
 searchField.onkeydown = (event) => {
   if (event.key === "Enter") {
-    let url = `https://api.weatherapi.com/v1/current.json?key=8685490f1f8f4420b26124327231204&q=${searchField.value}&aqi=no`;
+    let url = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${searchField.value}&aqi=no`;
     searchField.value = "";
     fetchWeather(url);
   }
